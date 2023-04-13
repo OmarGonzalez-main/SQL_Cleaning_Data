@@ -1,4 +1,4 @@
-    SQL Data Cleaning for Nashville Housing Dataset
+SQL Data Cleaning for Nashville Housing Dataset
 
 Project Summary:
 
