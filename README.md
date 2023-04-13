@@ -37,5 +37,9 @@ Removing duplicate rows:
 Deleting unused columns:
 
     Removing the unnecessary columns from the dataset (TaxDistrict, SaleDate, OwnerAddress, and PropertyAddress).
+    
+Cleaning up 'LandUse' column:
+
+    Combining similar land use categories that are separated due to extra spaces or misspelling or simply written differently.
 
 After performing these data cleaning steps, the Nashville housing dataset is now ready for further analysis or reporting. This project showcases the ability to clean and preprocess data using SQL, a critical skill for any data analyst.
