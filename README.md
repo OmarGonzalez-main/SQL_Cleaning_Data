@@ -1,6 +1,6 @@
 SQL Data Cleaning for Nashville Housing Dataset
 
-Project Summary:
+ Project Summary:
 
 In this SQL data cleaning project, we perform an extensive data cleaning process on a Nashville housing dataset to ensure data quality and prepare the dataset for further analysis or reporting. The dataset contains various attributes related to housing sales, such as Parcel ID, Property Address, Owner Address, Sale Date, Sale Price, and Legal Reference.
 
