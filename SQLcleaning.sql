@@ -35,7 +35,8 @@ SET SaleDateConverted = CONVERT(Date,SaleDate)
 -- POPULATING PROPERTY ADDRESS DATA
 
 
-SELECT a.ParcelID, a.PropertyAddress, b.ParcelID, b.PropertyAddress
+SELECT 
+	a.ParcelID, a.PropertyAddress, b.ParcelID, b.PropertyAddress
 FROM 
 	NashvilleHousing a
 JOIN
@@ -62,7 +63,8 @@ WHERE a.PropertyAddress IS NULL
 
 
 
-SELECT PropertyAddress
+SELECT 
+	PropertyAddress
 FROM 
 	NashvilleHousing 
 WHERE
@@ -96,6 +98,8 @@ FROM
 
 --- charindex() grabs the index for the given char character
 --- this allows us to split the column into two separate columns
+
+
 
 
 --- adding new columns for split data
@@ -138,6 +142,8 @@ FROM
 --- this allows us to split the column into two separate columns
 
 
+
+
 --- adding new columns for split data
 ALTER TABLE NashvilleHousing
 ADD OwnerSplitAddress NVARCHAR(255);
@@ -165,10 +171,12 @@ SET OwnerSplitState = PARSENAME(REPLACE(OwnerAddress,',','.'),1)
 --- I wanted to fill all null values for the owner address and city based on the property address and city because at first glance it seemed like
 --- they were the same for all rows. So let us check if this is the case
 
-SELECT PropertySplitAddress,PropertySplitCity,OwnerSplitAddress,OwnerSplitCity
+SELECT 
+	PropertySplitAddress,PropertySplitCity,OwnerSplitAddress,OwnerSplitCity
 FROM 
 	NashvilleHousing 
-WHERE PropertySplitAddress <> OwnerSplitAddress
+WHERE 
+	PropertySplitAddress <> OwnerSplitAddress
 
 --- we see that there are in fact over 5,000 rows where the property and owner address are NOT the same. I also found that there 
 --- is one record where cities are not the same.
@@ -192,9 +200,11 @@ SELECT
 	DISTINCT SoldAsVacant, COUNT(SoldAsVacant) AS value_counts
 FROM
 	NashvilleHousing
-GROUP BY SoldAsVacant
+GROUP BY 
+	SoldAsVacant
 
 --- right now we have 'N','Yes','Y','No' so we want them to be uniform and either just 'Yes' or 'No'
+
 
 
 
@@ -227,8 +237,10 @@ FROM
 	NashvilleHousing
 )
 DELETE
-FROM RowNum
-WHERE row_num >1
+FROM 
+	RowNum
+WHERE 
+	row_num >1
 
 --- the CTE in this code gathers all rows that have similar columns listed, then it adds a columns and lists the row numbers as 1 for each unique row
 --- and then values greater than one for each duplicated row
@@ -248,8 +260,10 @@ FROM
 	NashvilleHousing
 )
 SELECT *
-FROM RowNum
-WHERE row_num >1
+FROM 
+	RowNum
+WHERE 
+	row_num >1
 
 
 
@@ -280,8 +294,10 @@ SELECT
 	LandUse, LEN(LandUse) as counts
 FROM 
 	NashvilleHousing
-GROUP BY LandUse
-ORDER BY LandUse
+GROUP BY 
+	LandUse
+ORDER BY 
+	LandUse
 
 --- we can see that there are a few categories that can be combined like 'GREENBELT' can be added in with 'GREENBELT/RES GRRENBELT/RES'
 --- and we also need to fix that misspelling and there seems to be an extra space in there
